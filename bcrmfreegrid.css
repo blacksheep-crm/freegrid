@@ -1,0 +1,161 @@
+/*BCRM Free Grid Example CSS*/
+#bcrm_section_container {
+    margin-bottom: 6px;
+}
+/*default to flex layout, see below for CSS grid example*/
+#bcrm_section_container .ui-accordion-content{
+    display: flex;
+    margin-left:4px;
+    flex-wrap:wrap;
+	align-items: baseline;
+}
+.bcrm-new-grid-wrap {
+    min-width: 230px!important;
+}
+.bcrm-new-grid-wrap input[type="text"],
+.bcrm-new-grid-wrap textarea{
+    width: 100%!important;
+}
+.bcrm-new-grid-wrap textarea{
+    height: 5em!important;
+}
+
+.bcrm-new-grid-wrap input[type="checkbox"] {
+    width: 24px!important;
+    height: 24px!important;
+    position: relative;
+    left: 41%;
+    top: 2px;
+}
+.bcrm-new-grid-wrap .mceGridLabel{
+    text-align: left;
+}
+#bcrm_section_container h3{
+    background: linear-gradient(90deg, #d2e9f5, transparent);
+}
+.bcrm-new-grid-button{
+    cursor: pointer;
+    border: 2px solid!important;
+    padding: 4px;
+    border-radius: 8px;
+    background: #d2e9f5;
+}
+/*BCRM Free Grid Formatting Examples*/
+/*Smarten up them checkboxes*/
+[bcrm_bc='Contact'] [bcrm_field='SuppressAllCalls'] [type='checkbox']:checked{
+	accent-color: crimson;
+}
+[bcrm_bc='Contact'] [bcrm_field='EmailSRUpdatesFlag'] [type='checkbox']:checked{
+	accent-color: darkgreen;
+}
+
+/*Replace text with icon*/
+[bcrm_bc='Contact'] .mceGridField[bcrm_field='Status']{
+	display:none;
+}
+[bcrm_bc='Contact'] .bcrm-new-grid-wrap[bcrm_field='Status'] .mceGridLabel::after{
+    content: " ";
+    display: block;
+    background-image: url(../../images/icon_yellow_alert_d.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    top: 4px;
+    left: 32%;
+}
+[bcrm_bc='Contact'] .bcrm-new-grid-wrap[bcrm_field='Status'][bcrm_value='Active'] .mceGridLabel::after{
+    background-image: url(../../images/icon_green_alert_d.gif);
+}
+[bcrm_bc='Contact'] .bcrm-new-grid-wrap[bcrm_field='Status'][bcrm_value='Inactive'] .mceGridLabel::after{
+    background-image: url(../../images/icon_red_alert_d.gif);
+}
+/*hide empty fields always*/
+/*
+[bcrm_value='_null_']{
+	display:none;
+}
+*/
+
+/*BCRM Free Grid Form Applet UX Example*/
+.bcrm-new-grid-wrap input[type="text"], .bcrm-new-grid-wrap textarea {
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: 1px solid #abc!important;
+    font-size: 1.3em;
+	background: transparent;
+}
+.bcrm-new-grid-wrap textarea{
+	width: 50vw!important;
+}
+.bcrm-new-grid-wrap span[id*='icon'],
+.bcrm-new-grid-wrap a[id*='icon']{
+    border-left: none!important;
+    padding: 0px!important;
+    font-size: 20px;
+    top: 4px;
+    right: 0px;
+    color: #727780!important;
+	width: 0;
+}
+.bcrm-new-grid-wrap input[aria-readonly='true']+span[id*='icon']{
+	visibility:hidden!important;
+}
+.bcrm-new-grid-wrap input[class*='mvg']+span[id*='icon']{
+	visibility:visible!important;
+}
+.bcrm-new-grid-wrap:nth-of-type(1){
+	font-size:22px;
+	width: 90vw;
+}
+[bcrm_bc] .siebui-applet-title::before {
+    font-family: oracle;
+    content: "\e998";
+    background-color: #13b6cf;
+    color: white;
+    border-radius: 50%;
+    font-size: 28px;
+}
+[bcrm_bc='Contact'] .siebui-applet-title::before {
+    content: "\e972";
+    background-color: #5277b8;
+}
+[bcrm_bc='Opportunity'] .siebui-applet-title::before {
+	content:"\e9a0";
+	background-color: #e95a38;
+}
+
+/*small screen*/
+@media (max-width: 420px) {
+    .bcrm-new-grid-wrap input[type="text"],
+    .bcrm-new-grid-wrap textarea{
+        width: 90vw!important;
+    }
+}
+
+/*CSS Grid Example for a specific applet*/
+[bcrm_applet='ContactFormAppletChild'] #bcrm_section_container .ui-accordion-content {
+    display: grid;
+    grid-template-columns: max-content min-content min-content min-content min-content;
+    margin-left: 4px;
+}
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap:nth-of-type(1) {
+    width: unset;
+}
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap textarea {
+    width: 100%!important;
+}
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap[bcrm_field='Comment']{
+	grid-row: 8;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap[bcrm_value='N'],
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap[bcrm_value='Y'],
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap[bcrm_field='PIMCurrentUserSyncFlag']{
+	grid-column: 5;
+}
+[bcrm_applet='ContactFormAppletChild'] .bcrm-new-grid-wrap[bcrm_field='WorkPhoneExtension']{
+    grid-column: 2;
+    grid-row: 5;
+}
